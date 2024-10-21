@@ -74,3 +74,72 @@ docker network inspect minharede
     }
 ]
 ```
+Este comando devolve información detallada sobre a rede, incluíndo unha lista de contenedores conectados a ela. 
+
+
+## 4. Comprobar que os contenedores poden verse entre eles
+
+Para comprobar que os contenedores poden verse entre eles, podemos acceder a un dos contenedores e facer ping ao outro:
+```bash
+docker exec -it cont1 ping cont2
+```
+Se os contenedores están conectados correctamente, deberían poder facer ping entre eles sen problemas.
+
+
+## 5. Listar os contenedores conectados á rede
+
+Para listar todos os contenedores conectados á rede minharede:
+
+bash
+
+docker network inspect minharede
+
+Na sección Containers, podes ver os contenedores conectados a esa rede.
+
+
+## 6. Listar as propiedades da rede
+
+As propiedades da rede pódense listar co seguinte comando:
+
+bash
+
+docker network inspect minharede
+
+Isto inclúe información como o driver, subnet, gateway, e os contenedores conectados.
+
+
+## 7. Crea outra rede
+
+Agora creamos outra rede chamada nova_rede:
+
+bash
+
+docker network create nova_rede
+
+## 8. Lanza dous contenedores novos conectados a esa nova rede
+
+Creamos dous novos contenedores e conectámolos á rede nova_rede:
+```bash
+docker run -itd --name=cont3 --network=nova_rede ubuntu
+docker run -itd --name=cont4 --network=nova_rede ubuntu
+```
+
+## 9. Comproba as posibles conexións entre os 4 contenedores
+
+Agora podemos comprobar as conexións entre os contenedores das diferentes redes. Contenedores na mesma rede poden verse entre si, pero contenedores en redes distintas non poden comunicarse a menos que fagan parte da mesma rede.
+
+    - Proba de ping entre cont1 e cont2 (debería funcionar porque están na mesma rede minharede):
+```bash
+`docker exec -it cont1 ping cont2
+```
+    - Proba de ping entre cont3 e cont4 (debería funcionar porque están na rede nova_rede):
+
+```bash
+docker exec -it cont3 ping cont4
+```
+    - Proba de ping entre cont1 e cont3 (non debería funcionar porque están en redes distintas):
+
+```bash
+docker exec -it cont1 ping cont3
+```
+
