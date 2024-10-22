@@ -3,6 +3,9 @@
 
 Neste repositorio resolvemos o exercicio de Docker Network y Docker Compose, con explicacións claras de cada paso:
 
+---
+
+# Docker Network
 
 ## 1. Crear unha rede en Docker
 
@@ -142,4 +145,33 @@ docker exec -it cont3 ping cont4
 ```bash
 docker exec -it cont1 ping cont3
 ```
+---
+
+# Docker Compose
+
+
+
+
+
+
+
+
+
+
+Documentación proporcionada para hacerlo:
+
+https://docs.docker.com/compose/gettingstarted/
+
+https://docs.docker.com/compose/intro/compose-application-model/
+
+https://docs.docker.com/reference/cli/docker/network/create/
+
+https://medium.com/@caysever/docker-compose-network-b86e424fad82
+
+https://chatgpt.com
+
+
+
+
+
 
