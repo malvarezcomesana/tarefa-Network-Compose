@@ -133,7 +133,7 @@ Agora podemos comprobar as conexións entre os contenedores das diferentes redes
 
     - Proba de ping entre cont1 e cont2 (debería funcionar porque están na mesma rede minharede):
 ```bash
-`docker exec -it cont1 ping cont2
+docker exec -it cont1 ping cont2
 ```
     - Proba de ping entre cont3 e cont4 (debería funcionar porque están na rede nova_rede):
 
